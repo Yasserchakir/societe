@@ -1,0 +1,171 @@
+/* SidebarClient.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --color-primary: #6C9BCF;
+    --color-danger: #FF0060;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+.sidebar {
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    border-radius: 15px;
+    width: 12rem;
+    position: fixed;
+    top: 1.5rem;
+    left: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar:hover {
+    box-shadow: none;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.4rem 0 2rem 2rem;
+    color: var(--color-dark);
+    text-decoration: none;
+}
+
+.logo i {
+    font-size: 2rem;
+}
+
+.logo-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.logo-name span {
+    color: var(--color-primary);
+}
+
+.side-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.side-menu li {
+    position: relative;
+}
+
+.side-menu li a {
+    display: flex;
+    align-items: center;
+    color: var(--color-info-dark);
+    height: 3.7rem;
+    gap: 1rem;
+    margin-left: 2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.87rem;
+    font-weight: 500;
+}
+
+.side-menu li a i {
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+.side-menu li.active a,
+.side-menu li a:hover {
+    width: calc(100% - 2rem);
+    color: var(--color-primary);
+    background-color: var(--color-light);
+    margin-left: 0;
+}
+
+.side-menu li.active a::before {
+    content: '';
+    width: 6px;
+    height: 18px;
+    background-color: var(--color-primary);
+    position: absolute;
+    left: 0;
+}
+
+.side-menu li.active a i,
+.side-menu li a:hover i {
+    color: var(--color-primary);
+    margin-left: calc(1rem - 3px);
+}
+
+.side-menu li a:hover i {
+    margin-left: 0.6rem;
+}
+
+/* Logout specific styling */
+.side-menu .logout {
+    color: var(--color-danger);
+}
+
+.side-menu .logout:hover {
+    background-color: rgba(255, 0, 96, 0.1);
+    color: var(--color-danger);
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+    .sidebar {
+        width: 7rem;
+    }
+
+    .logo-name {
+        display: none;
+    }
+
+    .side-menu li a {
+        width: 5.6rem;
+        margin-left: 1rem;
+    }
+
+    .side-menu li.active a,
+    .side-menu li a:hover {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 15rem;
+        left: -100%;
+        z-index: 1000;
+        top: 0;
+        border-radius: 0;
+    }
+
+    /* You'll need to handle the mobile toggle in your component */
+    .sidebar.open {
+        left: 0;
+        animation: showMenu 0.4s ease forwards;
+    }
+
+    @keyframes showMenu {
+        to {
+            left: 0;
+        }
+    }
+}

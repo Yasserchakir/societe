@@ -1,0 +1,126 @@
+.container {
+  max-width: 800px;
+  margin-left: 10rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input, .textarea, .select {
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus, .textarea:focus, .select:focus {
+  border-color: #4299e1;
+  outline: none;
+}
+
+.textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.dropZone {
+  border: 2px dashed #e2e8f0;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  background: #f7fafc;
+  transition: all 0.3s ease;
+}
+
+.dropZone.dragActive {
+  border-color: #4299e1;
+  background: #edf2f7;
+}
+
+.fileInput {
+  display: none;
+}
+
+.preview {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.previewItem {
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+.previewImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.removeButton {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #f56565;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.removeButton:hover {
+  transform: scale(1.1);
+}
+
+.submitButton {
+  padding: 0.75rem;
+  background: #48bb78;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+  background: #38a169;
+  transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #f56565;
+  text-align: center;
+  font-weight: 500;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

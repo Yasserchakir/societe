@@ -1,0 +1,208 @@
+/* FamilleProduitModals.css */
+.blur-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 30, 50, 0.7);
+    /* Fond sombre semi-transparent */
+    backdrop-filter: blur(8px);
+    /* Effet de flou sur l'arrière-plan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+    z-index: 1000;
+}
+
+.blur-modal.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.1);
+    /* Fond glassmorphic */
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    /* Flou plus prononcé */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.blur-modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #f0f4f8;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #a0b0c0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+
+
+/* Body */
+.modal-body {
+    padding: 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #d0d8e0;
+    margin-bottom: 8px;
+    display: block;
+    font-family: "Poppins", sans-serif;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #a0b0c0;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 12px rgba(90, 156, 255, 0.2);
+    transform: scale(1.02);
+}
+
+.form-textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+/* Footer */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cancel-btn {
+    background: rgba(255, 85, 85, 0.8);
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 85, 85, 1);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 85, 85, 0.4);
+}
+
+.submit-btn {
+    background: rgba(85, 200, 120, 0.8);
+}
+
+.submit-btn:hover {
+    background: rgba(85, 200, 120, 1);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(85, 200, 120, 0.4);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .btn-icon {
+    transform: scale(1.2);
+}
+
+.cancel-btn:hover .btn-icon {
+    transform: rotate(90deg);
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

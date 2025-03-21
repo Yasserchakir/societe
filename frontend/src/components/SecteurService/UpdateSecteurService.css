@@ -1,0 +1,207 @@
+.update-secteur-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  .update-secteur-container h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .update-service-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    color: #34495e;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 600;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e6ed;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #2c3e50;
+    background: #f9fafc;
+    transition: all 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+    outline: none;
+  }
+  
+  .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .form-group select {
+    appearance: none;
+    background: #f9fafc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%2334495e" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 12px center;
+  }
+  
+  .drag-drop-area {
+    border: 2px dashed #bdc3c7;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    background: #f0f4f8;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .drag-drop-area.active {
+    border-color: #3498db;
+    background: #e6f0fa;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+  }
+  
+  .drag-drop-area.file-selected {
+    border-style: solid;
+    background: #e8f5e9;
+  }
+  
+  .drag-drop-area p {
+    margin: 0;
+    font-size: 14px;
+    color: #7f8c8d;
+    transition: color 0.3s ease;
+  }
+  
+  .drag-drop-area:hover p,
+  .drag-drop-area.active p {
+    color: #3498db;
+  }
+  
+  .drag-drop-area::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .drag-drop-area:hover::before,
+  .drag-drop-area.active::before {
+    opacity: 1;
+  }
+  
+  .current-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .current-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .file-input {
+    display: none;
+  }
+  
+  .form-buttons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .form-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff;
+  }
+  
+  .form-buttons button:first-child {
+    background: #3498db;
+  }
+  
+  .form-buttons button:first-child:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.5);
+  }
+  
+  .form-buttons button:last-child {
+    background: #95a5a6;
+  }
+  
+  .form-buttons button:last-child:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(149, 165, 166, 0.5);
+  }
+  
+  .form-buttons button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #fff;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+  
+  .notification {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    background: #27ae60;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.5);
+    animation: slideInLeft 0.5s ease-out, fadeOut 0.5s ease-out 1.5s forwards;
+  }
+  
+  .error {
+    color: #e74c3c;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 15px;
+  }

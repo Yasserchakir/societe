@@ -1,0 +1,122 @@
+.product-list-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 products per row */
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-card {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.btn-update, .btn-delete {
+  margin: 5px;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-update {
+  background: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+.btn-delete {
+  background: #e74c3c;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Media Styling */
+.media-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.product-media-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product-media-video {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+/* Update Form Styling */
+.update-form-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.update-form input, .update-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -55%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+/* Update Form Media Section */
+.update-form-container .dropzone {
+  border: 2px dashed #ddd;
+  padding: 20px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.update-form-container .dropzone:hover {
+  background-color: #e9e9e9;
+}
+
+.update-form-container .media-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.update-form-container .media-item {
+  margin-top: 10px;
+}
+
+.product-media-image {
+  max-width: 200px;
+  border-radius: 8px;
+}
+
+.product-media-video {
+  max-width: 200px;
+  border-radius: 8px;
+}

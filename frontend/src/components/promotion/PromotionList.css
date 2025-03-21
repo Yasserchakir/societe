@@ -1,0 +1,146 @@
+.promotion-list-container {
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeIn 1s ease-in;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.promotion-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.promotion-table th,
+.promotion-table td {
+  padding: 15px 20px;
+  text-align: left;
+}
+
+.promotion-table th {
+  background: #2c3e50;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.promotion-table td {
+  border-bottom: 1px solid #eee;
+  transition: background 0.3s;
+}
+
+.promotion-table tr:hover td {
+  background: #f8f9fa;
+}
+
+.add-button {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #27ae60;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.edit-btn {
+  padding: 8px 15px;
+  background: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.delete-btn {
+  padding: 8px 15px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.animate-button {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animate-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.animate-row {
+  opacity: 0;
+  animation: slideIn 0.5s ease forwards;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+}
+
+.status.active {
+  background: #27ae60;
+  color: white;
+}
+
+.status.inactive {
+  background: #7f8c8d;
+  color: white;
+}
+
+.loader {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+  animation: pulse 1.5s infinite;
+}
+
+.error {
+  text-align: center;
+  color: #e74c3c;
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+

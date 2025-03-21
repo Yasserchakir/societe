@@ -1,0 +1,65 @@
+/* Individual promotion row */
+.promotion-row {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    width: 100%;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .promotion-row:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .promotion-row img {
+    width: 100%;
+    height: auto;
+    border-bottom: 3px solid #f1f1f1;
+  }
+  
+  .promotion-row .promotion-content {
+    padding: 20px;
+  }
+  
+  .promotion-row .promotion-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .promotion-row .promotion-description {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .promotion-row .promotion-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    background-color: #ffd700;
+    text-align: center;
+    font-weight: 600;
+    color: #1e3c72;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .promotion-row .promotion-btn:hover {
+    background-color: #fff;
+    color: #1e3c72;
+    transform: translateY(-5px);
+  }
+  
+  @media (max-width: 768px) {
+    .promotion-row {
+      max-width: 100%;
+    }
+  }
+  

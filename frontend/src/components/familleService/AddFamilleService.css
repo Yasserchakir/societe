@@ -1,0 +1,222 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+ }
+
+.modalContent {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    animation: scaleIn 0.3s ease;
+}
+
+.title {
+    font-size: 2rem;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    animation: fadeInDown 0.5s ease;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+ }
+
+.input,
+.textarea {
+    padding: 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 5px rgba(66, 153, 225, 0.5);
+    outline: none;
+}
+
+.textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.dropZone {
+    border: 2px dashed #e2e8f0;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+    background: #f7fafc;
+    transition: all 0.3s ease;
+}
+
+.dropZone.dragActive {
+    border-color: #4299e1;
+    background: #edf2f7;
+}
+
+.fileInput {
+    display: none;
+}
+
+.preview {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.previewItem {
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.previewImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.removeButton {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #f56565;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.removeButton:hover {
+    transform: scale(1.1);
+}
+
+.modalActions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.submitButton,
+.cancelButton {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.submitButton {
+    background: #48bb78;
+    color: #fff;
+}
+
+.submitButton:hover {
+    background: #38a169;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+}
+
+.submitButton:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.cancelButton {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.cancelButton:hover {
+    background: #cbd5e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cancelButton:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.error {
+    color: #f56565;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

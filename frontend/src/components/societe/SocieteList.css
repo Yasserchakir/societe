@@ -1,0 +1,256 @@
+/* Import a luxurious font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+/* Container with a premium feel */
+.societe-container {
+  max-width: 1300px;
+  margin: 50px auto;
+  padding: 30px;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(120deg, #1e3c72 0%, #2a5298 100%);
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Title with a bold, modern twist */
+.societe-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.societe-title::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 215, 0, 0.2);
+  clip-path: circle(50px at 50% 50%);
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.societe-title::after {
+  content: '';
+  width: 100px;
+  height: 5px;
+  background: #ffd700;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ffd700;
+}
+
+/* Pulse animation for title */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* No société message with elegance */
+.no-societe {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #dfe6e9;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  animation: fadeIn 1s ease-in;
+}
+
+/* Table wrapper with a sleek frame */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+/* Table styling with a premium touch */
+.societe-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+}
+
+.societe-table th,
+.societe-table td {
+  padding: 20px;
+  text-align: left;
+  font-size: 1.1rem;
+  color: #2d3436;
+}
+
+.societe-table th {
+  background: #2d3436;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 3px solid #ffd700;
+}
+
+.societe-table tr {
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.societe-table tr:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background: #f7f9fc;
+}
+
+/* Row animation */
+.societe-row {
+  animation: zoomIn 0.6s ease-out forwards;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Action cell for consistent button alignment */
+.action-cell {
+  display: flex;
+  gap: 10px;
+}
+
+/* Unified action buttons */
+.action-btn {
+  width: 100px; /* Same size for both */
+  padding: 10px 0;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:hover {
+  transform: scale(1.1) rotate(2deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.edit-btn {
+  background: #00b894;
+}
+
+.edit-btn:hover {
+  background: #00a67d;
+}
+
+.delete-btn {
+  background: #d63031;
+}
+
+.delete-btn:hover {
+  background: #b71c1c;
+}
+
+/* Create button with a luxurious flair */
+.create-btn {
+  display: block;
+  width: 250px;
+  margin: 30px auto 0;
+  padding: 15px;
+  background: #ffd700;
+  color: #1e3c72;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.5);
+}
+
+.create-btn:hover {
+  background: #fff;
+  color: #1e3c72;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255, 215, 0, 0.7);
+  animation: glow 1.5s infinite alternate;
+}
+
+/* Glow animation for create button */
+@keyframes glow {
+  from {
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.9);
+  }
+}
+
+/* Fade-in animation for no-societe */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .societe-container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .societe-title {
+    font-size: 2rem;
+  }
+
+  .societe-table th,
+  .societe-table td {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .action-btn {
+    width: 80px;
+    padding: 8px 0;
+    font-size: 0.9rem;
+  }
+
+  .create-btn {
+    width: 200px;
+    padding: 12px;
+    font-size: 1rem;
+  }
+}

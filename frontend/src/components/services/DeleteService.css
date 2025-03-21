@@ -1,0 +1,127 @@
+/* Delete Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Dark overlay for contrast */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    /* Increased z-index to ensure it’s above all other elements */
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 15px;
+    /* Rounded corners for premium look */
+    padding: 24px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    /* Matching shadow from other components */
+    font-family: 'Poppins', sans-serif;
+    animation: slideIn 0.3s ease-out;
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2d3436;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.modal-text {
+    color: #636e72;
+    margin-bottom: 24px;
+    line-height: 1.5;
+    font-size: 1.1rem;
+    text-align: center;
+    /* Center text for better balance */
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    /* Center buttons for symmetry */
+    gap: 15px;
+}
+
+.cancel-btn,
+.confirm-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    /* More rounded for premium style, matching other buttons */
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 120px;
+    /* Consistent button width */
+}
+
+.cancel-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background-color: #e2e2e2;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.confirm-btn {
+    background-color: #d63031;
+    /* Red for consistency with delete action */
+    color: #fff;
+}
+
+.confirm-btn:hover {
+    background-color: #b71c1c;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(214, 48, 49, 0.4);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Ensure this doesn’t conflict with other z-index values */
+.delete-btn {
+    width: 100px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: #d63031;
+}
+
+.delete-btn:hover {
+    background: #b71c1c;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(214, 48, 49, 0.4);
+}

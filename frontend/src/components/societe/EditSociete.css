@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+.edit-societe-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  background: linear-gradient(120deg, #1e3c72 0%, #2a5298 100%);
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+.form-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.form-title::after {
+  content: '';
+  width: 80px;
+  height: 5px;
+  background: #ffd700;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ffd700;
+}
+
+.societe-form {
+  display: grid;
+  gap: 20px;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1.1rem;
+  color: #dfe6e9;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2d3436;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+  transform: scale(1.02);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group select[multiple] {
+  height: 120px;
+}
+
+.submit-btn {
+  padding: 15px;
+  background: #ffd700;
+  color: #1e3c72;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.5);
+}
+
+.submit-btn:hover {
+  background: #fff;
+  color: #1e3c72;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255, 215, 0, 0.7);
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 10px 25px rgba(255, 215, 0, 0.5); }
+  to { box-shadow: 0 15px 40px rgba(255, 215, 0, 0.9); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .edit-societe-container {
+    margin: 20px;
+    padding: 20px;
+  }
+  .form-title { font-size: 2rem; }
+  .submit-btn { font-size: 1rem; padding: 12px; }
+}

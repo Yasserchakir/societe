@@ -1,0 +1,97 @@
+/* AddSocieteForm.css */
+
+/* Body styles */
+body {
+    background-color: #f0f4f8;
+    font-family: 'Arial', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+/* Container setup to center the form */
+.container {
+    max-width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Card styling */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+}
+
+.card-body {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 0 0 15px 15px;
+}
+
+.form-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-select,
+.form-control,
+textarea {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    font-size: 1rem;
+}
+
+button {
+    font-size: 1.1rem;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.d-grid {
+    display: grid;
+    gap: 10px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        margin: 20px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+}

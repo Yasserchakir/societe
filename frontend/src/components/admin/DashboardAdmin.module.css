@@ -1,0 +1,153 @@
+.dashboardLayout {
+    min-height: 100vh;
+    background: #f0f2f5;
+}
+
+.header {
+    background: #fff;
+    padding: 0 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navMenu {
+    line-height: 64px;
+    display: flex;
+    justify-content: space-around;
+    background: transparent !important;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.navMenu .ant-menu-item {
+    margin: 0 10px;
+    font-size: 16px;
+    color: #666;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navMenu .ant-menu-item:hover,
+.navMenu .ant-menu-item-active {
+    color: #1890ff;
+    transform: scale(1.05);
+}
+
+.navMenu .ant-menu-item::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #1890ff;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.navMenu .ant-menu-item:hover::before,
+.navMenu .ant-menu-item-active::before {
+    opacity: 1;
+}
+
+.content {
+    padding: 24px;
+    min-height: calc(100vh - 64px);
+}
+
+.analyticsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.analyticsHeader h2 {
+    font-size: 20px;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.updateBtn {
+    background: #1890ff;
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.updateBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dashboardGrid {
+    display: grid;
+    gap: 20px;
+}
+
+.chartCard {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.statCard {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: bounceIn 1s ease-in-out;
+}
+
+.statCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.visitsCard .ant-statistic-content {
+    color: #1890ff;
+}
+
+.usersCard .ant-statistic-content {
+    color: #52c41a;
+}
+
+.ordersCard .ant-statistic-content {
+    color: #f5222d;
+}
+
+.registrationsCard .ant-statistic-content {
+    color: #13c2c2;
+}
+
+.percent {
+    font-size: 14px;
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

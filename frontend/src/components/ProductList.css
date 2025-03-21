@@ -1,0 +1,133 @@
+/* General container */
+.product-list-container {
+  margin: 20px;
+  text-align: center;
+}
+
+/* Product list grid */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual product card */
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Product card header */
+.product-card-header {
+  background-color: #f8f9fa;
+  padding: 15px;
+  text-align: center;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.product-card-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+/* Product card body */
+.product-card-body {
+  padding: 15px;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.product-card-body p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.product-card-body p strong {
+  font-weight: bold;
+}
+
+/* Media container */
+.media-container {
+  margin-top: 15px;
+}
+
+.media-item {
+  margin-bottom: 10px;
+}
+
+/* Styling for product media (images) */
+.product-media-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+/* Styling for product media (videos) */
+.product-media-video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Product card footer */
+.product-card-footer {
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+  border-top: 2px solid #e0e0e0;
+  text-align: center;
+}
+
+/* Hover effect for product card */
+.product-card:hover {
+  transform: translateY(-10px);
+}
+
+.product-card-footer p {
+  margin: 0;
+  color: #888;
+}
+
+/* Buttons for Update and Delete */
+.btn-update, .btn-delete {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-update {
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+}
+
+.btn-update:hover {
+  background-color: #0056b3;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  font-size: 1rem;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+/* Error and loading messages */
+.loading, .error {
+  font-size: 1.2rem;
+  color: #d9534f;
+}

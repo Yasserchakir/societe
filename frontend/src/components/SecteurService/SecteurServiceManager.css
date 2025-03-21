@@ -1,0 +1,24 @@
+.manager-container {
+    padding: 20px;
+    background: #f9fafb;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .manager-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(107, 114, 128, 0.1) 0%, transparent 70%);
+    animation: rotateBg 20s linear infinite;
+    z-index: -1;
+  }
+  
+  @keyframes rotateBg {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }

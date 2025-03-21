@@ -1,0 +1,169 @@
+.vendor-orders {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.vendor-orders::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotateGlow 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.vendor-orders h1 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.search-bar {
+  margin-bottom: 30px;
+  z-index: 1;
+}
+
+.search-bar input {
+  padding: 12px 20px;
+  width: 300px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+  outline: none;
+  width: 350px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.orders-table-container {
+  width: 100%;
+  max-width: 1400px; /* Increased to accommodate new columns */
+  z-index: 1;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.orders-table thead {
+  background: #2c3e50;
+  color: #fff;
+}
+
+.orders-table th {
+  padding: 15px;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.orders-table tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.orders-table tbody tr:hover {
+  background: rgba(240, 248, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.orders-table td {
+  padding: 15px;
+  font-size: 1em;
+  color: #34495e;
+}
+
+.client-link {
+  cursor: pointer;
+  color: #2980b9;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.client-link:hover {
+  color: #3498db;
+}
+
+.status-pending { color: #f39c12; font-weight: bold; }
+.status-accepted { color: #27ae60; font-weight: bold; }
+.status-rejected { color: #e74c3c; font-weight: bold; }
+
+.accept-btn, .reject-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+}
+
+.accept-btn {
+  background: #27ae60;
+  color: #fff;
+}
+
+.accept-btn:hover {
+  background: #2ecc71;
+  transform: scale(1.05);
+}
+
+.reject-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.reject-btn:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
+
+.loading-text {
+  font-size: 1.2em;
+  color: #fff;
+  animation: blink 1.5s infinite;
+}
+
+.error-text {
+  font-size: 1.2em;
+  color: #e74c3c;
+  text-align: center;
+}
+
+@keyframes blink {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
