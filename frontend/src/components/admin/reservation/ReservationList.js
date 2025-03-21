@@ -4,7 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-// Styles précédents inchangés (PageWrapper, Container, Title, etc.)
+// Styles précédents inchangés (PageWrapper, Container, etc.)
 const PageWrapper = styled.div`
   min-height: 100vh;
   background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
@@ -266,7 +266,7 @@ const ModalContent = styled(motion.div)`
   width: 100%;
   max-width: 600px;
   position: relative;
-  text-align: center;
+  text-align: left;
 `;
 
 const ModalTitle = styled(motion.h2)`
@@ -279,6 +279,7 @@ const ModalTitle = styled(motion.h2)`
   background-clip: text;
   text-shadow: 0 2px 15px rgba(45, 55, 72, 0.3);
   margin-bottom: 2rem;
+  text-align: center;
   position: relative;
 
   &::after {
@@ -300,46 +301,67 @@ const ModalTitle = styled(motion.h2)`
   }
 `;
 
-const ModalInfo = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
-`;
-
-const InfoItem = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  background: rgba(245, 245, 245, 0.8);
-  border-radius: 12px;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
-`;
-
-const InfoLabel = styled.span`
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  color: #4a5568;
-`;
-
-const InfoValue = styled.span`
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
-  color: #2d3748;
-  font-weight: 600;
-`;
-
-const ModalForm = styled(motion.div)`
+const ModalForm = styled(motion.form)`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 `;
 
-const ModalSelect = styled(Select)`
+const FormItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const FormLabel = styled.label`
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #4a5568;
+  text-transform: uppercase;
+  width: 150px;
+`;
+
+const FormInput = styled(motion.input)`
   width: 100%;
   padding: 1rem 1.25rem;
+  border-radius: 15px;
+  border: 2px solid #e2e8f0;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 6px rgba(74, 144, 226, 0.3);
+    transform: scale(1.02);
+    outline: none;
+  }
+`;
+
+const ModalSelect = styled(motion.select)`
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 15px;
+  border: 2px solid #e2e8f0;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%234a5568" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+
+  &:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 6px rgba(74, 144, 226, 0.3);
+    transform: scale(1.02);
+    outline: none;
+  }
 `;
 
 const ModalButtons = styled(motion.div)`
@@ -423,8 +445,12 @@ const ReservationList = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [selectedReservation, setSelectedReservation] = useState(null);
-  const [newStatus, setNewStatus] = useState("");
+  const [formData, setFormData] = useState({
+    id: "",
+    clientName: "",
+    serviceName: "",
+    status: "",
+  });
 
   useEffect(() => {
     fetchReservations();
@@ -471,34 +497,63 @@ const ReservationList = () => {
   }, [searchTerm, selectedDate, selectedStatus, reservations]);
 
   const openEditModal = (reservation) => {
-    setSelectedReservation(reservation);
-    setNewStatus(reservation.status);
+    setFormData({
+      id: reservation._id,
+      clientName: reservation.user
+        ? `${reservation.user.name} ${reservation.user.prenom}`
+        : "N/A",
+      serviceName: reservation.service ? reservation.service.servicename : "N/A",
+      status: reservation.status,
+    });
     setEditModalOpen(true);
   };
 
   const closeEditModal = () => {
     setEditModalOpen(false);
-    setSelectedReservation(null);
-    setNewStatus("");
+    setFormData({
+      id: "",
+      clientName: "",
+      serviceName: "",
+      status: "",
+    });
   };
 
-  const handleStatusChange = (e) => {
-    setNewStatus(e.target.value);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const updateReservationStatus = () => {
-    if (!selectedReservation) return;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.id) return;
+
+    // Préparer les données à envoyer au serveur
+    const updatedData = {
+      status: formData.status,
+      // Note : Les champs clientName et serviceName nécessitent une logique supplémentaire
+      // pour mettre à jour les objets user et service dans la base de données.
+      // Cela dépend de la structure de votre API et de votre backend.
+      // Pour simplifier, je vais supposer que ces champs sont directement modifiables.
+      user: {
+        name: formData.clientName.split(" ")[0] || "",
+        prenom: formData.clientName.split(" ")[1] || "",
+      },
+      service: {
+        servicename: formData.serviceName,
+      },
+    };
 
     axios
-      .put(`http://localhost:5000/api/reservations/${selectedReservation._id}`, {
-        status: newStatus,
-      })
+      .put(`http://localhost:5000/api/reservations/${formData.id}`, updatedData)
       .then(() => {
         fetchReservations();
         closeEditModal();
       })
       .catch((error) => {
-        console.error("Erreur lors de la mise à jour du statut :", error);
+        console.error("Erreur lors de la mise à jour de la réservation :", error);
       });
   };
 
@@ -632,7 +687,7 @@ const ReservationList = () => {
             </tbody>
           </Table>
         )}
-        {editModalOpen && selectedReservation && (
+        {editModalOpen && formData.id && (
           <ModalOverlay
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -646,70 +701,75 @@ const ReservationList = () => {
               transition={{ duration: 0.4 }}
             >
               <ModalTitle>Modifier la Réservation</ModalTitle>
-              <ModalInfo
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <InfoItem>
-                  <InfoLabel>ID Réservation :</InfoLabel>
-                  <InfoValue>{selectedReservation._id}</InfoValue>
-                </InfoItem>
-                <InfoItem>
-                  <InfoLabel>Client :</InfoLabel>
-                  <InfoValue>
-                    {selectedReservation.user
-                      ? `${selectedReservation.user.name} ${selectedReservation.user.prenom}`
-                      : "N/A"}
-                  </InfoValue>
-                </InfoItem>
-                <InfoItem>
-                  <InfoLabel>Service :</InfoLabel>
-                  <InfoValue>
-                    {selectedReservation.service
-                      ? selectedReservation.service.servicename
-                      : "N/A"}
-                  </InfoValue>
-                </InfoItem>
-              </ModalInfo>
               <ModalForm
+                onSubmit={handleSubmit}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <FilterItem>
-                  <FilterLabel htmlFor="newStatus">Nouveau Statut :</FilterLabel>
+                <FormItem>
+                  <FormLabel htmlFor="id">ID Réservation :</FormLabel>
+                  <FormInput
+                    id="id"
+                    name="id"
+                    value={formData.id}
+                    onChange={handleInputChange}
+                    disabled // L'ID est généralement non modifiable
+                  />
+                </FormItem>
+                <FormItem>
+                  <FormLabel htmlFor="clientName">Client :</FormLabel>
+                  <FormInput
+                    id="clientName"
+                    name="clientName"
+                    value={formData.clientName}
+                    onChange={handleInputChange}
+                  />
+                </FormItem>
+                <FormItem>
+                  <FormLabel htmlFor="serviceName">Service :</FormLabel>
+                  <FormInput
+                    id="serviceName"
+                    name="serviceName"
+                    value={formData.serviceName}
+                    onChange={handleInputChange}
+                  />
+                </FormItem>
+                <FormItem>
+                  <FormLabel htmlFor="status">Nouveau Statut :</FormLabel>
                   <ModalSelect
-                    id="newStatus"
-                    value={newStatus}
-                    onChange={handleStatusChange}
+                    id="status"
+                    name="status"
+                    value={formData.status}
+                    onChange={handleInputChange}
                   >
                     <option value="pending">En attente</option>
                     <option value="confirmed">Confirmé</option>
                     <option value="canceled">Annulé</option>
                   </ModalSelect>
-                </FilterItem>
+                </FormItem>
+                <ModalButtons
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  <ModalButton
+                    type="submit"
+                    className="update"
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Mettre à jour
+                  </ModalButton>
+                  <ModalButton
+                    type="button"
+                    className="cancel"
+                    whileTap={{ scale: 0.95 }}
+                    onClick={closeEditModal}
+                  >
+                    Annuler
+                  </ModalButton>
+                </ModalButtons>
               </ModalForm>
-              <ModalButtons
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                <ModalButton
-                  className="update"
-                  whileTap={{ scale: 0.95 }}
-                  onClick={updateReservationStatus}
-                >
-                  Mettre à jour
-                </ModalButton>
-                <ModalButton
-                  className="cancel"
-                  whileTap={{ scale: 0.95 }}
-                  onClick={closeEditModal}
-                >
-                  Annuler
-                </ModalButton>
-              </ModalButtons>
             </ModalContent>
           </ModalOverlay>
         )}
