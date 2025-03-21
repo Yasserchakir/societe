@@ -1,4 +1,3 @@
-// ManageUsers.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Table, Button, Input, Select, message, notification, Avatar } from "antd";
@@ -70,9 +69,9 @@ const ManageUsers = () => {
         placement: 'bottomRight',
         duration: 3,
         style: {
-          borderRadius: '8px',
-          background: '#ecfdf5',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+          borderRadius: '12px',
+          background: 'linear-gradient(135deg, #ecfdf5, #d1fae5)',
+          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.1)',
           border: '1px solid #6ee7b7',
         },
       });
@@ -84,9 +83,9 @@ const ManageUsers = () => {
         placement: 'bottomRight',
         duration: 4,
         style: {
-          borderRadius: '8px',
-          background: '#fef2f2',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+          borderRadius: '12px',
+          background: 'linear-gradient(135deg, #fef2f2, #fee2e2)',
+          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.1)',
           border: '1px solid #f87171',
         },
       });
@@ -140,14 +139,18 @@ const ManageUsers = () => {
             placeholder="Avatar URL"
           />
         ) : (
-          <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
+          <motion.div
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
             <Avatar
               src={avatar}
               size={40}
               style={{
-                backgroundColor: avatar ? null : "#4f46e5",
+                background: avatar ? null : 'linear-gradient(45deg, #4f46e5, #7c3aed)',
                 border: "2px solid #e5e7eb",
-                boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
               }}
             >
               {!avatar && record.name?.charAt(0).toUpperCase()}
@@ -166,14 +169,20 @@ const ManageUsers = () => {
             value={record.role}
             onChange={(value) => handleInputChange(record._id, "role", value)}
             className="modern-select"
-            dropdownStyle={{ borderRadius: "8px" }}
+            dropdownStyle={{ borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
           >
             <Option value="Admin">Admin</Option>
             <Option value="Client">Client</Option>
             <Option value="Vendeur">Vendeur</Option>
           </Select>
         ) : (
-          <span className="modern-text">{role}</span>
+          <motion.span
+            className="modern-text"
+            whileHover={{ color: "#4f46e5" }}
+            transition={{ duration: 0.2 }}
+          >
+            {role}
+          </motion.span>
         )
       ),
     },
@@ -193,7 +202,13 @@ const ManageUsers = () => {
             placeholder="Full Name"
           />
         ) : (
-          <span className="modern-text">{`${name} ${record.prenom || ""}`}</span>
+          <motion.span
+            className="modern-text"
+            whileHover={{ color: "#4f46e5" }}
+            transition={{ duration: 0.2 }}
+          >
+            {`${name} ${record.prenom || ""}`}
+          </motion.span>
         )
       ),
     },
@@ -209,7 +224,13 @@ const ManageUsers = () => {
             placeholder="Email"
           />
         ) : (
-          <span className="modern-text">{email}</span>
+          <motion.span
+            className="modern-text"
+            whileHover={{ color: "#4f46e5" }}
+            transition={{ duration: 0.2 }}
+          >
+            {email}
+          </motion.span>
         )
       ),
     },
@@ -226,7 +247,13 @@ const ManageUsers = () => {
             placeholder="City"
           />
         ) : (
-          <span className="modern-text">{city || "N/A"}</span>
+          <motion.span
+            className="modern-text"
+            whileHover={{ color: "#4f46e5" }}
+            transition={{ duration: 0.2 }}
+          >
+            {city || "N/A"}
+          </motion.span>
         )
       ),
     },
@@ -242,7 +269,13 @@ const ManageUsers = () => {
             placeholder="Phone"
           />
         ) : (
-          <span className="modern-text">{telephone || "N/A"}</span>
+          <motion.span
+            className="modern-text"
+            whileHover={{ color: "#4f46e5" }}
+            transition={{ duration: 0.2 }}
+          >
+            {telephone || "N/A"}
+          </motion.span>
         )
       ),
     },
@@ -253,33 +286,41 @@ const ManageUsers = () => {
         <div className="modern-actions">
           {isEditing(record) ? (
             <>
-              <Button
-                type="link"
-                onClick={() => save(record)}
+              <motion.button
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileTap={{ scale: 0.9 }}
                 className="action-button save-btn"
-                icon={<i className='bx bx-check' />}
-              />
-              <Button
-                type="link"
-                onClick={cancel}
+                onClick={() => save(record)}
+              >
+                <i className='bx bx-check' />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.2, rotate: -10 }}
+                whileTap={{ scale: 0.9 }}
                 className="action-button cancel-btn"
-                icon={<i className='bx bx-x' />}
-              />
+                onClick={cancel}
+              >
+                <i className='bx bx-x' />
+              </motion.button>
             </>
           ) : (
             <>
-              <Button
-                type="link"
-                onClick={() => edit(record)}
+              <motion.button
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileTap={{ scale: 0.9 }}
                 className="action-button edit-btn"
-                icon={<i className='bx bx-pencil' />}
-              />
-              <Button
-                type="link"
-                onClick={() => handleDelete(record._id)}
+                onClick={() => edit(record)}
+              >
+                <i className='bx bx-pencil' />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.2, rotate: -10 }}
+                whileTap={{ scale: 0.9 }}
                 className="action-button delete-btn"
-                icon={<i className='bx bx-trash-alt' />}
-              />
+                onClick={() => handleDelete(record._id)}
+              >
+                <i className='bx bx-trash-alt' />
+              </motion.button>
             </>
           )}
         </div>
@@ -302,8 +343,9 @@ const ManageUsers = () => {
           key={i}
           className={`modern-pagination-item ${currentPage === i ? 'active' : ''}`}
           onClick={() => handlePageChange(i)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.15, backgroundColor: "#7c3aed" }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 300 }}
         >
           {i}
         </motion.button>
@@ -315,22 +357,31 @@ const ManageUsers = () => {
   return (
     <motion.div
       className="modern-users-container"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="modern-header">
-        <h2><i className='bx bx-users'/> Manage Users</h2>
+        <motion.h2
+          initial={{ x: -50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <i className='bx bx-users'/> Manage Users
+        </motion.h2>
       </div>
       
       <motion.div 
         className="filter-search-section"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
       >
         <div className="search-container">
-          <i className='bx bx-search search-icon'/>
+          <motion.i
+            className='bx bx-search search-icon'
+            whileHover={{ scale: 1.2, color: "#4f46e5" }}
+          />
           <Input
             placeholder="Search by name or email..."
             value={searchTerm}
@@ -342,7 +393,7 @@ const ManageUsers = () => {
           value={roleFilter}
           onChange={setRoleFilter}
           className="modern-filter-select"
-          dropdownStyle={{ borderRadius: "8px" }}
+          dropdownStyle={{ borderRadius: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
         >
           <Option value="All">All Roles</Option>
           <Option value="Admin">Admin</Option>
@@ -351,17 +402,23 @@ const ManageUsers = () => {
         </Select>
       </motion.div>
 
-      <Table
-        dataSource={paginatedUsers}
-        loading={loading}
-        rowKey="_id"
-        columns={columns}
-        pagination={false}
-        className="modern-table"
-        bordered={false}
-        scroll={{ x: 'max-content' }}
-        style={{ borderRadius: "12px", overflow: "hidden" }}
-      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+      >
+        <Table
+          dataSource={paginatedUsers}
+          loading={loading}
+          rowKey="_id"
+          columns={columns}
+          pagination={false}
+          className="modern-table"
+          bordered={false}
+          scroll={{ x: 'max-content' }}
+          style={{ borderRadius: "16px", overflow: "hidden" }}
+        />
+      </motion.div>
       {totalPages > 1 && renderPagination()}
     </motion.div>
   );
