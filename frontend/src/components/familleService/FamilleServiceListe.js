@@ -114,8 +114,8 @@ const FamilleServiceListe = () => {
 
   return (
     <div className="famille-service-container">
-      <div className="controls-container" style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
-        <div className="search-box" style={{ flex: 1 }}>
+      <div className="controls-container">
+        <div className="search-box">
           <span className="search-icon">🔍</span>
           <input
             type="text"
@@ -141,6 +141,7 @@ const FamilleServiceListe = () => {
         <table className="orders-table">
           <thead>
             <tr>
+              <th>Image</th>
               <th onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}>
                 Nom{' '}
                 {sortOrder === 'asc' ? (
@@ -156,16 +157,25 @@ const FamilleServiceListe = () => {
           <tbody>
             {filteredServices.length === 0 ? (
               <tr>
-                <td colSpan="3" className="no-data">
+                <td colSpan="4" className="no-data">
                   Aucun résultat trouvé
                 </td>
               </tr>
             ) : (
               filteredServices.map((familleService, index) => (
-                <tr
-                  key={familleService._id}
-                  style={{ animationDelay: index * 0.1 + 's' }}
-                >
+                <tr key={familleService._id} style={{ animationDelay: `${index * 0.1}s` }}>
+                  <td>
+                    {familleService.imageUrl ? (
+                      <img
+                        src={`http://localhost:5000${familleService.imageUrl}`}
+                        alt={familleService.nom}
+                        className="service-image"
+                        onError={(e) => (e.target.src = 'http://localhost:5000/uploads/default.jpg')}
+                      />
+                    ) : (
+                      'Aucune image'
+                    )}
+                  </td>
                   {editingId === familleService._id ? (
                     <>
                       <td>

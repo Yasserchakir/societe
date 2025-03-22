@@ -163,82 +163,116 @@
 .modern-actions {
   display: flex;
   gap: 12px;
+  justify-content: center;
 }
 
 .action-button {
-  padding: 0;
-  height: auto;
-  font-size: 20px;
-  background: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 10px;
   border: none;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.action-button i {
+  font-size: 18px;
+}
+
+.action-button .button-text {
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.action-button:hover .button-text {
+  opacity: 1;
 }
 
 .action-button.save-btn {
   color: #10b981;
+  border: 1px solid #10b981;
 }
 
 .action-button.save-btn:hover {
-  color: #059669;
+  background: linear-gradient(45deg, #10b981, #059669);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
 }
 
 .action-button.cancel-btn {
   color: #ef4444;
+  border: 1px solid #ef4444;
 }
 
 .action-button.cancel-btn:hover {
-  color: #dc2626;
+  background: linear-gradient(45deg, #ef4444, #dc2626);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
 }
 
 .action-button.edit-btn {
   color: #3b82f6;
+  border: 1px solid #3b82f6;
 }
 
 .action-button.edit-btn:hover {
-  color: #2563eb;
+  background: linear-gradient(45deg, #3b82f6, #2563eb);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .action-button.delete-btn {
   color: #f87171;
+  border: 1px solid #f87171;
 }
 
 .action-button.delete-btn:hover {
-  color: #ef4444;
+  background: linear-gradient(45deg, #f87171, #ef4444);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(248, 113, 113, 0.4);
 }
 
 .modern-pagination {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 24px;
+  gap: 12px;
+  margin-top: 28px;
 }
 
 .modern-pagination-item {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   border: 1px solid #d1d5db;
-  background: #ffffff;
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
   color: #4f46e5;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .modern-pagination-item:hover {
-  background: #f3f4f6;
+  background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  color: #ffffff;
   border-color: #4f46e5;
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
 }
 
 .modern-pagination-item.active {
   background: linear-gradient(45deg, #4f46e5, #7c3aed);
   color: #ffffff;
   border-color: #4f46e5;
-  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+  transform: scale(1.1);
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Table, Button, Input, Select, message, notification, Avatar } from "antd";
+import { Table, Input, Select, message, notification, Avatar } from "antd";
 import 'boxicons/css/boxicons.min.css';
 import './ManageUsers.css';
 import { motion } from "framer-motion";
@@ -287,39 +287,47 @@ const ManageUsers = () => {
           {isEditing(record) ? (
             <>
               <motion.button
-                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileHover={{ scale: 1.15, rotate: 15 }}
                 whileTap={{ scale: 0.9 }}
                 className="action-button save-btn"
                 onClick={() => save(record)}
+                transition={{ type: "spring", stiffness: 400 }}
               >
                 <i className='bx bx-check' />
+                <span className="button-text">Save</span>
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.2, rotate: -10 }}
+                whileHover={{ scale: 1.15, rotate: -15 }}
                 whileTap={{ scale: 0.9 }}
                 className="action-button cancel-btn"
                 onClick={cancel}
+                transition={{ type: "spring", stiffness: 400 }}
               >
                 <i className='bx bx-x' />
+                <span className="button-text">Cancel</span>
               </motion.button>
             </>
           ) : (
             <>
               <motion.button
-                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileHover={{ scale: 1.15, rotate: 15 }}
                 whileTap={{ scale: 0.9 }}
                 className="action-button edit-btn"
                 onClick={() => edit(record)}
+                transition={{ type: "spring", stiffness: 400 }}
               >
                 <i className='bx bx-pencil' />
+                <span className="button-text">Edit</span>
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.2, rotate: -10 }}
+                whileHover={{ scale: 1.15, rotate: -15 }}
                 whileTap={{ scale: 0.9 }}
                 className="action-button delete-btn"
                 onClick={() => handleDelete(record._id)}
+                transition={{ type: "spring", stiffness: 400 }}
               >
                 <i className='bx bx-trash-alt' />
+                <span className="button-text">Delete</span>
               </motion.button>
             </>
           )}
@@ -343,7 +351,7 @@ const ManageUsers = () => {
           key={i}
           className={`modern-pagination-item ${currentPage === i ? 'active' : ''}`}
           onClick={() => handlePageChange(i)}
-          whileHover={{ scale: 1.15, backgroundColor: "#7c3aed" }}
+          whileHover={{ scale: 1.2, boxShadow: "0 6px 20px rgba(79, 70, 229, 0.3)" }}
           whileTap={{ scale: 0.9 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
